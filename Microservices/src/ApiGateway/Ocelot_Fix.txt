@@ -1,0 +1,6 @@
+
+For Upgrade Ocelot the 16.0.1 version,  please download latest nuget package and install your Ocelot project. 
+After that you just have to change "ReRoutes" to "Routes" in ocelot.json. This change fixed the problem and made it work.
+This change fixed the problem and made it work.
+
+https://ocelot.readthedocs.io/en/latest/features/configuration.html

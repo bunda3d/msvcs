@@ -1,0 +1,89 @@
+//check docker status
+docker ps
+docker images
+// new rabbit mq with management and operations ports declared
+docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+// check docker statuses again, then check localhost:15672 in browser
+localhost:15672
+// initial pw+log = guest and guest
+
+
+// Swagger / Postman test inputs
+// POST: add cart
+{
+  "userName": "YoBroMexico",
+  "items": [
+    {
+      "quantity": 4,
+      "color": "Nacho Cheese",
+      "price": 50,
+      "productId": "999",
+      "productName": "Hello Kitty Inedible Cheeze Spread"
+    },
+    {
+      "quantity": 1,
+      "color": "Stankonia",
+      "price": 10,
+      "productId": "1234567",
+      "productName": "Hello Dolly Fremium Dreamium"
+    }
+  ]
+}
+
+// POST: checkout
+
+// more details
+{
+  "addressLine": "124 three street",
+  "cardName": "Visa",
+  "cardNumber": "1234567891011121",
+  "country": "This Land is Our Land",
+  "cvv": "123",
+  "emailAddress": "dingdong@thewitchis.dead",
+  "expiration": "0224",
+  "firstName": "Yo",
+  "lastName": "Mexico",
+  "paymentMethod": 1,
+  "totalPrice": 210,
+  "userName": "YoBroMexico",
+  "zipCode": "12345"
+}
+
+
+//Docker image cmd
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.Ports}}"
+
+docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.State}}\t{{.Status}}"
+
+docker images
+// stop all running containers, 
+// ie: 1st 2 chars of container id
+docker stop 1a
+docker stop 2b
+// check again for all stopped, ie: docker ps
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+// sometimes need to remove image to build updated vsn
+// (like you don't see new endpoints in swagger/index)
+docker rmi 1a
+// if image cannot remove because inside container, 
+// remove container instead. first view all containers
+docker ps -a
+docker rm 1a
+// remove all containers if it's been awhile?
+docker ps -a
+docker images
+// remove some or all images
+docker rmi 1a
+// only removed a couple images that weren't showing 
+// recent changes... and that's ok, can build 
+// containers again and will only build what's needed
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+// docker build said this, so maybe should use 
+// build cmd in future, not delete containers...?
+// ***
+// WARNING: Image for service basket.api was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+// ***
+// so... this?
+docker-compose build -f docker-compose.yml -f docker-compose.override.yml up -d
+// or this?
+docker-compose up --build -f docker-compose.yml -f docker-compose.override.yml up -d

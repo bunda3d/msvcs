@@ -1,0 +1,12 @@
+Login error when creating seed data (but only) when Ordering.API runs in Docker. Once manually created, it runs correctly
+
+Some of students got login error when composing the docker file. Finally we clarify the problem. Thanks to "Alejandro Benitez". Follow below thread;
+
+https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/learn/#questions/13418050/
+
+And the solution applied with below commit;
+https://github.com/aspnetrun/run-aspnetcore-microservices/commit/48864011205519cd11d343fce41104c9f5191bb2
+
+BR,
+Mehmet
+
