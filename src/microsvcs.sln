@@ -6,8 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{1336936C-6721-4CAC-9CBF-4547B5E98E1A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{8BD439E2-9D9D-4E68-935F-4A6DD3B47D2C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\microservices\Microservices\src\API_documentation.xlsx = ..\..\microservices\Microservices\src\API_documentation.xlsx
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{B9F77130-87C7-426B-853A-A013A67971C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{B9F77130-87C7-426B-853A-A013A67971C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

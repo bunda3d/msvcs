@@ -14,7 +14,62 @@ docker images -a
 docker logs -f shopping-mongo
 
 // go to dir of install, -it=InteractiveTerminal, 
-// /bin/bash folder is to create bash secrets
+// /bin/bash folder is to run mongo commands
 docker exec -it shopping-mongo /bin/bash
 // looks like this when inside the IT :
 // root@gobbledygook:/#
+// list what's in that container'
+ls
+// mongo welcome msg and tips, step into mongo cmds
+mongo
+// show databases
+show dbs
+// use thisCrazyDb :switch to db, use for the following cmds
+use CatalogDb
+// db.createCollection('CollectionName') = kinda like a table, but for nosql. returns { "ok" : 1 }
+db.createCollection('Products')
+// insert items into Products collection
+db.Products.insertMany(
+  [
+    {
+      "Name": "Asus Laptop",
+      "Category": "Computers",
+      "Summary": "Summary",
+      "Description": "Description",
+      "ImageFile": "ImageFile",
+      "Price": 754.93
+    },
+    {
+      "Name": "HP Laptop",
+      "Category": "Computers",
+      "Summary": "Summary",
+      "Description": "Description",
+      "ImageFile": "ImageFile",
+      "Price": 688.93
+    },
+    {
+      "Name": "Lenovo Tablet",
+      "Category": "Tablets",
+      "Summary": "Summary",
+      "Description": "Description",
+      "ImageFile": "ImageFile",
+      "Price": 545.93
+    },
+    {
+      "Name": "Huion Tablet",
+      "Category": "Drawing Tablets",
+      "Summary": "Summary",
+      "Description": "Description",
+      "ImageFile": "ImageFile",
+      "Price": 288.93
+    }
+  ]
+)
+// other mongo cmds:
+// view collectitons / delete them 
+db.Products.find({}).pretty()
+db.Products.remove({})
+
+show databases
+show collections
+db.Products.find({}).pretty()
