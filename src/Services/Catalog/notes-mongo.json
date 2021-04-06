@@ -1,0 +1,20 @@
+// notes
+// docker commands
+
+// docker run -detached 
+// -portNumOfLocalMachine:fwdToDbImage
+// --name [container] shopping-mongo [image name] mongo
+docker run -d -p 27017:27017 --name shopping-mongo mongo
+
+// check containers or images [-a=force all, optional]
+docker ps -a
+docker images -a
+
+// troubleshooting = view logs + container name
+docker logs -f shopping-mongo
+
+// go to dir of install, -it=InteractiveTerminal, 
+// /bin/bash folder is to create bash secrets
+docker exec -it shopping-mongo /bin/bash
+// looks like this when inside the IT :
+// root@gobbledygook:/#
