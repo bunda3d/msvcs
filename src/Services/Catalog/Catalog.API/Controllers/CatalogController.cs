@@ -25,10 +25,10 @@ namespace Catalog.API.Controllers
 
 		#region CRUD
 		/// <summary>
-		/// Creates a new item, adds it to this data store
+		/// Creates a new item
 		/// </summary>
-		/// <remarks>CreateProduct</remarks>
-		/// <param name="item"></param>  
+		/// <param name="item"></param>
+		/// <remarks>Create Product</remarks>
 		[HttpPost(Name = "CreateProduct")]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
 		public async Task<ActionResult<Product>> CreateProduct([FromBody] Product item)
@@ -42,7 +42,8 @@ namespace Catalog.API.Controllers
 		/// Retrieves a specific item by unique id
 		/// </summary>
 		/// <remarks>GetProduct</remarks>
-		/// <param name="id">Mongo Id: 602d2149e773f2a3990b47f5</param>  
+		/// <param name="id"></param>  
+		/// <remarks>Get Product</remarks>
 		// Mongo BSON object Id length =24
 		[HttpGet("{id:length(24)}", Name = "GetProduct")]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -66,7 +67,7 @@ namespace Catalog.API.Controllers
 		/// Updates item properties
 		/// </summary>
 		/// <param name="item"></param> 
-		/// <remarks>UpdateProduct</remarks>
+		/// <remarks>Update Product</remarks>
 		[HttpPut(Name = "UpdateProduct")]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
@@ -81,10 +82,10 @@ namespace Catalog.API.Controllers
 		}
 
 		/// <summary>
-		/// Deletes a specific item.
+		/// Deletes a specific item by unique id
 		/// </summary>
-		/// <param name="id"></param>  
-		/// <remarks>DeleteProduct</remarks>
+		/// <param name="id"></param>
+		/// <remarks>Delete Product</remarks>
 		[HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
@@ -102,7 +103,10 @@ namespace Catalog.API.Controllers
 		#endregion CRUD
 
 		#region CRUD Lists
-
+		/// <summary>
+		/// Retrieves all items
+		/// </summary>
+		/// <remarks>Get Products</remarks>
 		[HttpGet]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		[ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
@@ -117,6 +121,11 @@ namespace Catalog.API.Controllers
 			return Ok(items);
 		}
 
+		/// <summary>
+		/// Retrieves all items by name
+		/// </summary>
+		/// <param name="name"></param>
+		/// <remarks>Get Products by Name</remarks>
 		[HttpGet]
 		[Route("[action]/{name}", Name = "GetProductByName")]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -132,6 +141,11 @@ namespace Catalog.API.Controllers
 			return Ok(items);
 		}
 
+		/// <summary>
+		/// Retrieves all items by category
+		/// </summary>
+		/// <param name="category"></param>
+		/// <remarks>Get Products by Category</remarks>
 		[Route("[action]/{category}", Name = "GetProductByCategory")]
 		[HttpGet]
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
