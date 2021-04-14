@@ -5,7 +5,7 @@ namespace Catalog.API.Entities
 {
 	public class Product
 	{
-		/// <example>602d2149e773f2a3990b47f5</example>
+		/// <example>6073ca0bd932aa3291eb524f</example>
 		[BsonId]
 		[BsonRepresentation(BsonType.ObjectId)]
 		public string Id { get; set; }

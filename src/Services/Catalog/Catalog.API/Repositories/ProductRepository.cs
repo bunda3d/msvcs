@@ -61,8 +61,11 @@ namespace Catalog.API.Repositories
 
 		public async Task<IEnumerable<Product>> GetProducts()
 		{
+			int qtyOfRecords = 5;
+
 			return await _context.Products
 				.Find(p => true)
+				.Limit(qtyOfRecords)
 				.ToListAsync();
 		}
 
