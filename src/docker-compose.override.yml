@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  catalogdb: 
+    container_name: catalogdb
+    restart: always
+    ports: 
+      - "27017:27017"
+      #open mongo port in container and local machine
+    volumes:
+      - mongo_data:/data/db
+      #path mongo docker img doc recommends for data dir
+
+
+  catalog.api:
+    container_name: catalog.api
+    #notice db settings is from proj appsettings but 
+    #change localhost to container name of appropriate db in docker
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+      #- ASPNETCORE_URLS=https://+:443;http://+:80
+    #api proj always dependent on its db; start in order
+    depends_on:
+      - catalogdb
+    #forwarding to port 8000 in local machine
+    ports:
+      - "8000:80"
+      #- "8000:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

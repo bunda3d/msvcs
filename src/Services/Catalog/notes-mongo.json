@@ -73,3 +73,16 @@ db.Products.remove({})
 show databases
 show collections
 db.Products.find({}).pretty()
+
+// AFTER SETTING UP VISUAL STUDIO DOCKER-COMPOSE FILES
+// command for using docker-compose to build containers
+// and images according to the docker-compose files
+// --> launch CMD prompt from dir these files are in.
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up
+
+// also this for rebuilds
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build -d
+
+// do this for a scorched earth rebuild
+// also this for rebuilds
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build -d --force-recreate -V
