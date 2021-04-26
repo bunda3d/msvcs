@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
 
-#use docker volumes are for persistent db's => or: data storage 
+#Docker volumes are for persistent db's or other data storage 
 #outside of the containers and that exist on the host file system
 volumes:
   mongo_data:

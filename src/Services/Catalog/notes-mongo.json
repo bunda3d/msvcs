@@ -86,3 +86,6 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build -
 // do this for a scorched earth rebuild
 // also this for rebuilds
 docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build -d --force-recreate -V
+
+// stop containers / images
+docker-compose -f docker-compose.yml -f docker-compose.override.yml down

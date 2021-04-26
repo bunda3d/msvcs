@@ -61,6 +61,7 @@ namespace Catalog.API.Repositories
 
 		public async Task<IEnumerable<Product>> GetProducts()
 		{
+			// LIMITING TO 5 RECORDS for testing
 			int qtyOfRecords = 5;
 
 			return await _context.Products
